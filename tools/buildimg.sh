@@ -28,8 +28,7 @@ sudo cp img/* mnt
 
 echo "[*] Copy kernel image to" $2 "..."
 # sudo cp prebuild/kernel8.img mnt
-sudo cp prebuild/kernel8.img mnt
-# sudo cp $1 mnt
+sudo cp $1 mnt
 
 echo "[*] Umount" $2 "..."
 sudo umount mnt
