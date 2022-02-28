@@ -1,0 +1,6 @@
+*.o
+*.elf
+*.img
+image
+!prebuild/*
+!img/*

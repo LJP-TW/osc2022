@@ -1,23 +1,37 @@
-# Operating Systems Capstone 2022
+# My OSC 2022
 
-This repository is homework submission for students
+## Author
 
-## How to submit homework
+| 學號 | GitHub 帳號 | 姓名 | Email |
+| --- | ----------- | --- | --- |
+|`310555003`| `LJP-TW` | `張書銘` | ljp.cs10@nycu.edu.tw |
 
-1. Fork [this repository](https://github.com/oscapstone/osc2022) on GitHub 
-    ![](images/fork_button.png)
-2. Write down following info in your `README.md`
-    - GitHub account name
-    - Student ID
-    - Your name
-3. Design and implement your kernel in forked repository
-4. Create a GitHub pull request
-    - Choose `oscapstone/osc2022` as base repository and `{your student ID}` as base branch
-    - Choose branch in your forked repository as compare branch
-    - Name it with student ID and which lab e.g. `0856085 lab0`
-    ![](images/pull_request.png)
-5. We will accept pull request when lab due date
+## How to build
 
-repeat 3-5 to submit later homework/lab.
+* Download dependencies:
+```
+sudo apt-get install gcc-aarch64-linux-gnu qemu-system-arm
+```
 
-## Happy Coding ~
+* Build kernel8.img:
+```
+make
+```
+
+* Build myos.img (which you can dd to SD card):
+```
+make image
+```
+
+## How to run
+
+* Qemu emulation:
+```
+make qemu
+```
+
+## How to burn it into pi3
+
+```
+dd if=./myos.img of=/dev/<your SD card device>
+```
