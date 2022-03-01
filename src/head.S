@@ -12,6 +12,12 @@ _start:
   // Hang other CPUs
   cbnz x0, proc_hang
 
+  // Initialize bss
+  ldr x0, =_sbss
+  ldr x1, =_ebss
+  sub x1, x1, x0
+  bl memzero
+
   // Initialize stack
   ldr x0, =_stack_top
   mov sp, x0
