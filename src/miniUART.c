@@ -3,6 +3,33 @@
 #include <BCM2837.h>
 #include <utils.h>
 
+int uart_recvline(char *buff, int maxlen)
+{
+	int cnt = 0;
+	
+	// Reserve space for NULL byte
+	maxlen--;
+
+	while (maxlen) {
+		char c = uart_recv();
+
+		if (c == '\r') {
+			// TODO: what if c == '\0'?
+			break;
+		}
+		
+		uart_send(c);
+		*buff = c;
+		buff++;
+		cnt += 1;
+		maxlen -= 1;
+	}
+
+	*buff = 0;
+
+	return cnt;
+}
+
 void uart_send(char c)
 {
 	while (!(get32(AUX_MU_LSR_REG) & 0x20)) {};
