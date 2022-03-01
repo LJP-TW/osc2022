@@ -1,5 +1,6 @@
 #include <mini_uart.h>
 #include <string.h>
+#include <BCM2837.h>
 
 #define BUFSIZE 0x100
 
@@ -24,6 +25,7 @@ void start_kernel(void)
             uart_send_string("Hello World!");
         } else if (!strcmp("reboot", shell_buf)) {
             uart_send_string("Reboot!");
+            BCM2837_reset(10);
         } else {
             uart_send_string(shell_buf);
         }

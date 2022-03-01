@@ -44,4 +44,8 @@
 #define GPPUDCLK0 BUS_TO_PERIPHERALS(0x7E200098)
 #define GPPUDCLK1 BUS_TO_PERIPHERALS(0x7E20009c)
 
+void BCM2837_reset(int tick);
+void BCM2837_cancel_reset();
+
+
 #endif /* _BCM2837_H */
